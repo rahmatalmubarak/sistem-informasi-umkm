@@ -63,6 +63,10 @@
               <input type="text" class="form-control" placeholder="masukkan kontak..." name="kontak">
             </div>
             <div class="form-group">
+              <label>Alamat</label>
+              <input type="text" class="form-control" placeholder="masukkan alamat..." name="alamat">
+            </div>
+            <div class="form-group">
               <label>Nomor Rekening (Khusus Pelaku UMKM)</label>
               <input type="text" class="form-control" placeholder="masukkan kontak..." name="rekening">
             </div>

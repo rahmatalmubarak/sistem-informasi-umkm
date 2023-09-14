@@ -60,6 +60,10 @@
               <input type="text" class="form-control" placeholder="masukkan kontak..." name="kontak" value="<?= $data['user']['kontak'] ?>">
             </div>
             <div class="form-group">
+              <label>Alamat</label>
+              <input type="text" class="form-control" placeholder="masukkan alamat..." name="alamat" value="<?= $data['user']['alamat'] ?>">
+            </div>
+            <div class="form-group">
               <label>Nomor Rekening (Khusus Pelaku UMKM)</label>
               <input type="text" class="form-control" placeholder="masukkan kontak..." name="rekening" value="<?= $data['user']['rekening'] ?>">
             </div>

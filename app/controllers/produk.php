@@ -19,6 +19,16 @@ class Produk extends Controller {
 		$this->view('produk/index', $data);
 		$this->view('templates/footer');
 	}
+	public function detail($id)
+	{
+		$data['title'] = 'Data Produk';
+		$data['produk'] = $this->model('ProdukModel')->getProdukById($id);
+		$data['paginate'] = $this->model('ProdukModel')->get_pagination_number();
+		$this->view('templates/header', $data);
+		$this->view('templates/sidebar', $data);
+		$this->view('produk/detail', $data);
+		$this->view('templates/footer');
+	}
 	public function cari()
 	{
 		$data['title'] = 'Data Produk';

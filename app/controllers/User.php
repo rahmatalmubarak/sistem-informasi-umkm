@@ -19,6 +19,16 @@ class User extends Controller {
 		$this->view('user/index', $data);
 		$this->view('templates/footer');
 	}
+	public function detail($id)
+	{
+		$data['title'] = 'Data User';
+		$data['user'] = $this->model('UserModel')->getUserById($id);
+		$data['paginate'] = $this->model('UserModel')->get_pagination_number();
+		$this->view('templates/header', $data);
+		$this->view('templates/sidebar', $data);
+		$this->view('user/detail', $data);
+		$this->view('templates/footer');
+	}
 	public function page($page)
 	{
 		$data['title'] = 'Data User';
@@ -111,7 +121,7 @@ class User extends Controller {
 				}
 			} else {
 				Flasher::setMessage('Gagal','password tidak sama.','danger');
-				// header('location: '. base_url . '/user/tambah');
+				header('location: '. base_url . '/user/tambah');
 				exit;	
 			}
 		}

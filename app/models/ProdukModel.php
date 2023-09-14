@@ -37,13 +37,14 @@ class ProdukModel {
 
 	public function getProdukById($id)
 	{
-		$this->db->query('SELECT * FROM ' . $this->table . ' WHERE id=:id');
+		$query = 'SELECT ' . $this->table . '.*,' . $this->table_relation . '.nama_kategori FROM ' . $this->table .
+			' JOIN ' . $this->table_relation . ' ON ' . $this->table . '.' . $this->table_relation . '_id = ' . $this->table_relation . '.id WHERE ' . $this->table . '.id=:id';
+		$this->db->query($query);
 		$this->db->bind('id',$id);
 		return $this->db->single();
 	}
 	public function tambahProduk($data)
 	{
-		var_dump($data);
 		$ekstensi_diperbolehkan	= array('png', 'jpg');
 		$gambar = $_FILES['gambar']['name'];
 		$x = explode('.', $gambar);
@@ -99,13 +100,7 @@ class ProdukModel {
 			$this->db->bind('nama_toko', $data['nama_toko']);
 			$this->db->bind('kategori_id', $data['kategori_id']);
 		}
-		try {
-			//code...
-			$this->db->execute();
-		} catch (\Throwable $th) {
-			echo $th;
-			//throw $th;
-		}
+		$this->db->execute();
 		return $this->db->rowCount();
 	}
 

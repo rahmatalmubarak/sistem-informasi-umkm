@@ -53,7 +53,7 @@
                 <th>Kontak</th>
                 <th>Rekening</th>
                 <th>Role / Level</th>
-                <th style="width: 160px">Action</th>
+                <th style="width: 150px">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -64,13 +64,14 @@
                   <td><img src="<?= base_url . '/assets/img/user/' . $row['photo'] ?>" height="50"></td>
                   <td><?= $row['nama']; ?></td>
                   <td><?= $row['email']; ?></td>
-                  <td><?= $row['nama_role'] != "Pelaku UMKM" ? "-" :$row['nama_toko']; ?></td>
+                  <td><?= $row['nama_role'] != "Pelaku UMKM" ? "-" : $row['nama_toko']; ?></td>
                   <td><?= $row['kontak']; ?></td>
                   <td><?= $row['rekening']; ?></td>
                   <td><?= $row['nama_role']; ?></td>
                   <td>
-                    <a href="<?= base_url; ?>/user/edit/<?= $row['id']; ?>" class="btn btn-info ">Edit</a>
-                    <a href="<?= base_url; ?>/user/hapus/<?= $row['id']; ?>" class="btn btn-danger" onclick="return confirm('Hapus data?');">Hapus</a>
+                    <a href="<?= base_url; ?>/user/detail/<?= $row['id']; ?>" class="btn btn-xs btn-success">Detail</a>
+                    <a href="<?= base_url; ?>/user/edit/<?= $row['id']; ?>" class="btn btn-xs btn-info ">Edit</a>
+                    <a href="<?= base_url; ?>/user/hapus/<?= $row['id']; ?>" class="btn btn-xs btn-danger" onclick="return confirm('Hapus data?');">Hapus</a>
                   </td>
                 </tr>
               <?php $no++;

@@ -21,7 +21,6 @@
       </div>
     </div>
     <!-- Default box -->
-<?php var_dump($data)?>
     <div class="card">
       <div class="card-header">
         <h3 class="card-title"><?= $data['title'] ?></h3> <a href="<?= base_url; ?>/produk/tambah" class="btn float-right btn-primary">Tambah Produk</a>
@@ -51,7 +50,7 @@
               <th>Tanggal Update</th>
               <th>Nama Toko</th>
               <th>Kategori</th>
-              <th style="width: 160px">Action</th>
+              <th style="width: 150px">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -67,7 +66,9 @@
                 <td><?= $row['nama_toko']; ?></td>
                 <td><?= $row['nama_kategori']; ?></td>
                 <td>
-                  <a href="<?= base_url; ?>/produk/edit/<?= $row['id'] ?>" class="btn btn-info">Edit</a> <a href="<?= base_url; ?>/produk/hapus/<?= $row['id'] ?>" class="btn btn-danger" onclick="return confirm('Hapus data?');">Hapus</a>
+                  <a href="<?= base_url; ?>/produk/detail/<?= $row['id']; ?>" class="btn btn-xs btn-success">Detail</a>
+                  <a href="<?= base_url; ?>/produk/edit/<?= $row['id'] ?>" class="btn btn-xs btn-info">Edit</a>
+                  <a href="<?= base_url; ?>/produk/hapus/<?= $row['id'] ?>" class="btn btn-xs btn-danger" onclick="return confirm('Hapus data?');">Hapus</a>
                 </td>
               </tr>
             <?php $no++;

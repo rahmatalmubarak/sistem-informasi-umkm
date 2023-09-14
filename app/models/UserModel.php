@@ -20,8 +20,10 @@ class UserModel {
 	}
 
 	public function getUserById($id)
-	{
-		$this->db->query('SELECT * FROM ' . $this->table . ' WHERE id=:id');
+	{	
+		$query = 'SELECT ' . $this->table . '.*,' . $this->table_relation . '.nama_role FROM ' . $this->table .
+			' JOIN ' . $this->table_relation . ' ON ' . $this->table . '.' . $this->table_relation . '_id = ' . $this->table_relation . '.id ' . ' WHERE '. $this->table.'.id=:id ';
+		$this->db->query($query);
 		$this->db->bind('id',$id);
 		return $this->db->single();
 	}
@@ -36,13 +38,14 @@ class UserModel {
 		if (!empty($photo)) {
 			if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
 				move_uploaded_file($file_tmp, realpath('../public').'/assets/img/user/' . $photo);
-				$query = "INSERT INTO user (photo,nama,email,jenis_kelamin,kontak,nama_toko,rekening,password,role_id) VALUES(:photo,:nama,:email,:jenis_kelamin,:kontak,:nama_toko,:rekening,:password,:role_id)";
+				$query = "INSERT INTO user (photo,nama,email,jenis_kelamin,kontak,alamat,nama_toko,rekening,password,role_id) VALUES(:photo,:nama,:email,:jenis_kelamin,:kontak,:alamat,:nama_toko,:rekening,:password,:role_id)";
 				$this->db->query($query);
 				$this->db->bind('photo', $photo);
 				$this->db->bind('nama',$data['nama']);
 				$this->db->bind('email',$data['email']);
 				$this->db->bind('jenis_kelamin', $data['jenis_kelamin']);
 				$this->db->bind('kontak', $data['kontak']);
+				$this->db->bind('alamat', $data['alamat']);
 				$this->db->bind('nama_toko', $data['nama_toko']);
 				$this->db->bind('password', md5($data['password']));
 				$this->db->bind('role_id', $data['role_id']);
@@ -82,13 +85,14 @@ class UserModel {
 			$file_tmp = $_FILES['photo']['tmp_name'];
 		}
 		if(empty($_POST['password']) && empty($_FILES['photo']['name'])) {
-			$query = "UPDATE user SET nama=:nama,email=:email,jenis_kelamin=:jenis_kelamin,kontak=:kontak,nama_toko=:nama_toko,rekening=:rekening,role_id=:role_id WHERE id=:id";
+			$query = "UPDATE user SET nama=:nama,email=:email,jenis_kelamin=:jenis_kelamin,kontak=:kontak,alamat=:alamat,nama_toko=:nama_toko,rekening=:rekening,role_id=:role_id WHERE id=:id";
 			$this->db->query($query);
 			$this->db->bind('id', $data['id']);
 			$this->db->bind('nama', $data['nama']);
 			$this->db->bind('email', $data['email']);
 			$this->db->bind('jenis_kelamin', $data['jenis_kelamin']);
 			$this->db->bind('kontak', $data['kontak']);
+			$this->db->bind('alamat', $data['alamat']);
 			$this->db->bind('nama_toko', $data['nama_toko']);
 			$this->db->bind('role_id', $data['role_id']);
 			$this->db->bind('rekening', $data['rekening']);
