@@ -5,7 +5,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Halaman Kategori</h1>
+          <h1>Halaman Produk</h1>
         </div>
       </div>
     </div><!-- /.container-fluid -->
@@ -21,20 +21,20 @@
       </div>
     </div>
     <!-- Default box -->
-
+<?php var_dump($data)?>
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title"><?= $data['title'] ?></h3> <a href="<?= base_url; ?>/kategori/tambah" class="btn float-right btn-primary">Tambah Kategori</a>
+        <h3 class="card-title"><?= $data['title'] ?></h3> <a href="<?= base_url; ?>/produk/tambah" class="btn float-right btn-primary">Tambah Produk</a>
       </div>
       <div class="card-body">
-        <form action="<?= base_url; ?>/kategori/cari" method="post">
+        <form action="<?= base_url; ?>/produk/cari" method="post">
           <div class="row mb-3">
             <div class="col-lg-6">
               <div class="input-group">
                 <input type="text" class="form-control" placeholder="" name="key">
                 <div class="input-group-append">
                   <button class="btn btn-outline-secondary" type="submit">Cari Data</button>
-                  <a class="btn btn-outline-danger" href="<?= base_url; ?>/kategori">Reset</a>
+                  <a class="btn btn-outline-danger" href="<?= base_url; ?>/produk">Reset</a>
                 </div>
               </div>
             </div>
@@ -44,18 +44,30 @@
           <thead>
             <tr>
               <th style="width: 10px">#</th>
+              <th>Gambar</th>
+              <th>Nama Produk</th>
+              <th>Harga</th>
+              <th>Deskripsi</th>
+              <th>Tanggal Update</th>
+              <th>Nama Toko</th>
               <th>Kategori</th>
-              <th style="width: 150px">Action</th>
+              <th style="width: 160px">Action</th>
             </tr>
           </thead>
           <tbody>
             <?php $no = 1; ?>
-            <?php foreach ($data['kategori'] as $row) : ?>
+            <?php foreach ($data['produk'] as $row) : ?>
               <tr>
                 <td><?= $no; ?></td>
+                <td><img src="<?= base_url . '/assets/img/produk/' . $row['gambar'] ?>" height="50"></td>
+                <td><?= $row['nama_produk']; ?></td>
+                <td><?= $row['harga']; ?></td>
+                <td><?= $row['deskripsi']; ?></td>
+                <td><?= $row['tanggal_update']; ?></td>
+                <td><?= $row['nama_toko']; ?></td>
                 <td><?= $row['nama_kategori']; ?></td>
                 <td>
-                  <a href="<?= base_url; ?>/kategori/edit/<?= $row['id'] ?>" class="btn btn-info">Edit</a> <a href="<?= base_url; ?>/kategori/hapus/<?= $row['id'] ?>" class="btn btn-danger" onclick="return confirm('Hapus data?');">Hapus</a>
+                  <a href="<?= base_url; ?>/produk/edit/<?= $row['id'] ?>" class="btn btn-info">Edit</a> <a href="<?= base_url; ?>/produk/hapus/<?= $row['id'] ?>" class="btn btn-danger" onclick="return confirm('Hapus data?');">Hapus</a>
                 </td>
               </tr>
             <?php $no++;
@@ -72,7 +84,7 @@
                 # code...
               ?>
                 <form action="" method="post">
-                  <li class="paginate_button page-item"><a href="<?php echo base_url; ?>/kategori/page/<?php echo $i + 1 ?>" aria-controls="example1" data-dt-idx="1" tabindex="0" class="page-link"><?php echo $i + 1 ?></a></li>
+                  <li class="paginate_button page-item"><a href="<?= base_url; ?>/produk/page/<?= $i + 1 ?>" aria-controls="example1" data-dt-idx="1" tabindex="0" class="page-link"><?= $i + 1 ?></a></li>
                 </form>
               <?php } ?>
               <li class="paginate_button page-item next" id="example1_next"><a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>

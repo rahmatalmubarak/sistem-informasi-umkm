@@ -1,18 +1,18 @@
 <?php
 
-class KategoriModel {
+class RoleModel {
 	
-	private $table = 'kategori';
+	private $table = 'role';
 	private $db;
 	private $total_records;
 
 	public function __construct()
 	{
 		$this->db = new Database;
-		$this->get_all_data_kategori();
+		$this->get_all_data();
 	}
 
-	public function get_all_data_kategori()
+	public function get_all_data()
 	{
 		$this->db->query('SELECT * FROM ' . $this->table);
 		$this->total_records = count($this->db->resultSet());
@@ -24,7 +24,7 @@ class KategoriModel {
 		return ceil($this->total_records / 10);
 	}
 
-	public function getAllKategori()
+	public function getAllRole()
 	{
 		$start = 0;
 		$this->db->query('SELECT * FROM ' . $this->table . ' LIMIT ' . $start . ', 10 ');
@@ -32,34 +32,34 @@ class KategoriModel {
 		return $this->db->resultSet();
 	}
 
-	public function getKategoriById($id)
+	public function getRoleById($id)
 	{
 		$this->db->query('SELECT * FROM ' . $this->table . ' WHERE id=:id');
 		$this->db->bind('id',$id);
 		return $this->db->single();
 	}
-	public function tambahKategori($data)
+	public function tambahRole($data)
 	{
-		$query = "INSERT INTO kategori (nama_kategori) VALUES(:nama_kategori)";
+		$query = "INSERT INTO role (nama_role) VALUES(:nama_role)";
 		$this->db->query($query);
-		$this->db->bind('nama_kategori',$data['nama_kategori']);
+		$this->db->bind('nama_role',$data['nama_role']);
 		$this->db->execute();
 
 		return $this->db->rowCount();
 	}
 
-	public function updateDataKategori($data)
+	public function updateDataRole($data)
 	{
-		$query = "UPDATE kategori SET nama_kategori=:nama_kategori WHERE id=:id";
+		$query = "UPDATE role SET nama_role=:nama_role WHERE id=:id";
 		$this->db->query($query);
 		$this->db->bind('id',$data['id']);
-		$this->db->bind('nama_kategori',$data['nama_kategori']);
+		$this->db->bind('nama_role',$data['nama_role']);
 		$this->db->execute();
 
 		return $this->db->rowCount();
 	}
 
-	public function deleteKategori($id)
+	public function deleteRole($id)
 	{
 		$this->db->query('DELETE FROM ' . $this->table . ' WHERE id=:id');
 		$this->db->bind('id',$id);
@@ -68,16 +68,17 @@ class KategoriModel {
 		return $this->db->rowCount();
 	}
 
-	public function cariKategori()
+	public function cariRole()
 	{
 		$key = $_POST['key'];
-		$this->db->query("SELECT * FROM " . $this->table . " WHERE nama_kategori LIKE :key");
+		$this->db->query("SELECT * FROM " . $this->table . " WHERE nama_role LIKE :key");
 		$this->db->bind('key',"%$key%");
 		return $this->db->resultSet();
 	}
 
-	public function pagination($page)
+	public function pagination()
 	{
+		$page = explode('/', $_GET['url'])[2];
 		$start = 0;
 		if ($page > 1) {
 			$start = ($page * 10) - 10;

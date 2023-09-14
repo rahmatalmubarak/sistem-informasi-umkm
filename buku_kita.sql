@@ -119,7 +119,7 @@ INSERT INTO `kategori` (`id`, `nama_kategori`) VALUES
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `nama` varchar(50) DEFAULT NULL,
-  `username` varchar(25) NOT NULL,
+  `email` varchar(25) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -127,7 +127,7 @@ CREATE TABLE `user` (
 -- Dumping data untuk tabel `user`
 --
 
-INSERT INTO `user` (`id`, `nama`, `username`, `password`) VALUES
+INSERT INTO `user` (`id`, `nama`, `email`, `password`) VALUES
 (1, 'Herzi', 'admin', '21232f297a57a5a743894a0e4a801fc3');
 
 --

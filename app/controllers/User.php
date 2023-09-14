@@ -13,6 +13,17 @@ class User extends Controller {
 	{
 		$data['title'] = 'Data User';
 		$data['user'] = $this->model('UserModel')->getAllUser();
+		$data['paginate'] = $this->model('UserModel')->get_pagination_number();
+		$this->view('templates/header', $data);
+		$this->view('templates/sidebar', $data);
+		$this->view('user/index', $data);
+		$this->view('templates/footer');
+	}
+	public function page($page)
+	{
+		$data['title'] = 'Data User';
+		$data['user'] = $this->model('UserModel')->pagination($page);
+		$data['paginate'] = $this->model('UserModel')->get_pagination_number();
 		$this->view('templates/header', $data);
 		$this->view('templates/sidebar', $data);
 		$this->view('user/index', $data);
@@ -22,6 +33,7 @@ class User extends Controller {
 	{
 		$data['title'] = 'Data User';
 		$data['user'] = $this->model('UserModel')->cariUser();
+		$data['paginate'] = $this->model('UserModel')->get_pagination_number();
 		$data['key'] = $_POST['key'];
 		$this->view('templates/header', $data);
 		$this->view('templates/sidebar', $data);
@@ -33,6 +45,7 @@ class User extends Controller {
 
 		$data['title'] = 'Edit User';
 		$data['user'] = $this->model('UserModel')->getUserById($id);
+		$data['role'] = $this->model('RoleModel')->getAllRole();
 		$this->view('templates/header', $data);
 		$this->view('templates/sidebar', $data);
 		$this->view('user/edit', $data);
@@ -41,6 +54,7 @@ class User extends Controller {
 
 	public function tambah(){
 		$data['title'] = 'Tambah User';		
+		$data['role'] = $this->model('RoleModel')->getAllRole();
 		$this->view('templates/header', $data);
 		$this->view('templates/sidebar', $data);
 		$this->view('user/create', $data);
@@ -50,8 +64,8 @@ class User extends Controller {
 	public function simpanUser(){		
 		if($_POST['password'] == $_POST['ulangi_password']) {	
 			$row = $this->model('UserModel')->cekUsername();
-			if($row['username'] == $_POST['username']){
-				Flasher::setMessage('Gagal','Username yang anda masukan sudah pernah digunakan!','danger');
+			if($row && $row['email'] == $_POST['email']){
+				Flasher::setMessage('Gagal','Email yang anda masukan sudah pernah digunakan!','danger');
 				header('location: '. base_url . '/user/tambah');
 				exit;	
 			} else {
@@ -97,7 +111,7 @@ class User extends Controller {
 				}
 			} else {
 				Flasher::setMessage('Gagal','password tidak sama.','danger');
-				header('location: '. base_url . '/user/tambah');
+				// header('location: '. base_url . '/user/tambah');
 				exit;	
 			}
 		}

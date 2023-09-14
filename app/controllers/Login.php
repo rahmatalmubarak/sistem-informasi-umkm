@@ -9,16 +9,18 @@ class Login extends Controller {
 	}
 
 	public function prosesLogin() {
-		if($row = $this->model('LoginModel')->checkLogin($_POST) > 0 ) {
-				$_SESSION['username'] = $row['username'];
+		$row = $this->model('LoginModel')->checkLogin($_POST);
+		if($row > 0 ) {
+				$_SESSION['email'] = $row['email'];
 				$_SESSION['nama'] = $row['nama'];
+				$_SESSION['id'] = $row['id'];
 				$_SESSION['session_login'] = 'sudah_login'; 
 
 				//$this->model('LoginModel')->isLoggedIn($_SESSION['session_login']);
 				
 				header('location: '. base_url . '/home');
 		} else {
-			Flasher::setMessage('Username / Password','salah.','danger');
+			Flasher::setMessage('Email / Password','salah.','danger');
 			header('location: '. base_url . '/login');
 			exit;	
 		}

@@ -13,6 +13,7 @@ class Kategori extends Controller {
 	{
 		$data['title'] = 'Data Kategori';
 		$data['kategori'] = $this->model('KategoriModel')->getAllKategori();
+		$data['paginate'] = $this->model('KategoriModel')->get_pagination_number();
 		$this->view('templates/header', $data);
 		$this->view('templates/sidebar', $data);
 		$this->view('kategori/index', $data);
@@ -22,7 +23,19 @@ class Kategori extends Controller {
 	{
 		$data['title'] = 'Data Kategori';
 		$data['kategori'] = $this->model('KategoriModel')->cariKategori();
+		$data['paginate'] = $this->model('KategoriModel')->get_pagination_number();
 		$data['key'] = $_POST['key'];
+		$this->view('templates/header', $data);
+		$this->view('templates/sidebar', $data);
+		$this->view('kategori/index', $data);
+		$this->view('templates/footer');
+	}
+
+	public function page($page)
+	{
+		$data['title'] = 'Data Kategori';
+		$data['kategori'] = $this->model('KategoriModel')->pagination($page);
+		$data['paginate'] = $this->model('KategoriModel')->get_pagination_number();
 		$this->view('templates/header', $data);
 		$this->view('templates/sidebar', $data);
 		$this->view('kategori/index', $data);

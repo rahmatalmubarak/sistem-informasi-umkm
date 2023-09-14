@@ -31,7 +31,7 @@
 
       <form action="<?= base_url; ?>/login/prosesLogin" method="post">
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="ketikkan username.." name="username">
+          <input type="text" class="form-control" placeholder="ketikkan email.." name="email">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
