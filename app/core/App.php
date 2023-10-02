@@ -27,7 +27,6 @@ class App{
 			$this->params = array_values($url);
 		}
 		
-		// var_dump([$this->controller, $this->method], $this->params);
 		//jalankan controller
 		call_user_func_array([$this->controller, $this->method], $this->params);
 	}

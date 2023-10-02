@@ -5,7 +5,7 @@ class Role extends Controller {
 	{	
 		if($_SESSION['session_login'] != 'sudah_login') {
 			Flasher::setMessage('Login','Tidak ditemukan.','danger');
-			header('location: '. base_url . '/login');
+			header('location: '. base_url . '/auth/login');
 			exit;
 		}
 	} 
@@ -14,10 +14,10 @@ class Role extends Controller {
 		$data['title'] = 'Data Role';
 		$data['role'] = $this->model('RoleModel')->getAllRole();
 		$data['paginate'] = $this->model('RoleModel')->get_pagination_number();
-		$this->view('templates/header', $data);
-		$this->view('templates/sidebar', $data);
-		$this->view('role/index', $data);
-		$this->view('templates/footer');
+		$this->view('dashboard/templates/header', $data);
+		$this->view('dashboard/templates/sidebar', $data);
+		$this->view('dashboard/role/index', $data);
+		$this->view('dashboard/templates/footer');
 	}
 	public function cari()
 	{
@@ -25,10 +25,10 @@ class Role extends Controller {
 		$data['role'] = $this->model('RoleModel')->cariRole();
 		$data['paginate'] = $this->model('RoleModel')->get_pagination_number();
 		$data['key'] = $_POST['key'];
-		$this->view('templates/header', $data);
-		$this->view('templates/sidebar', $data);
-		$this->view('role/index', $data);
-		$this->view('templates/footer');
+		$this->view('dashboard/templates/header', $data);
+		$this->view('dashboard/templates/sidebar', $data);
+		$this->view('dashboard/role/index', $data);
+		$this->view('dashboard/templates/footer');
 	}
 
 	public function page()
@@ -36,29 +36,29 @@ class Role extends Controller {
 		$data['title'] = 'Data Role';
 		$data['role'] = $this->model('RoleModel')->pagination();
 		$data['paginate'] = $this->model('RoleModel')->get_pagination_number();
-		$this->view('templates/header', $data);
-		$this->view('templates/sidebar', $data);
-		$this->view('role/index', $data);
-		$this->view('templates/footer');
+		$this->view('dashboard/templates/header', $data);
+		$this->view('dashboard/templates/sidebar', $data);
+		$this->view('dashboard/role/index', $data);
+		$this->view('dashboard/templates/footer');
 	}
 
 	public function edit($id)
 	{
 		$data['title'] = 'Detail Role';
 		$data['role'] = $this->model('RoleModel')->getRoleById($id);
-		$this->view('templates/header', $data);
-		$this->view('templates/sidebar', $data);
-		$this->view('role/edit', $data);
-		$this->view('templates/footer');
+		$this->view('dashboard/templates/header', $data);
+		$this->view('dashboard/templates/sidebar', $data);
+		$this->view('dashboard/role/edit', $data);
+		$this->view('dashboard/templates/footer');
 	}
 
 	public function tambah() 
 	{
 		$data['title'] = 'Tambah Role';		
-		$this->view('templates/header', $data);
-		$this->view('templates/sidebar', $data);
-		$this->view('role/create', $data);
-		$this->view('templates/footer');
+		$this->view('dashboard/templates/header', $data);
+		$this->view('dashboard/templates/sidebar', $data);
+		$this->view('dashboard/role/create', $data);
+		$this->view('dashboard/templates/footer');
 	}
 
 	public function simpanRole()

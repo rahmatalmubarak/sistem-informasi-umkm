@@ -12,7 +12,7 @@ class LoginModel {
 
 	public function checkLogin($data)
 	{
-		$query = "SELECT * FROM user WHERE email = :email AND password = :password";
+		$query = "SELECT user.id as user_id,user.*, role.* FROM user JOIN role ON user.role_id = role.id WHERE email = :email AND password = :password";
 		$this->db->query($query);
 		$this->db->bind('email', $data['email']);
 		$this->db->bind('password', md5($data['password']));

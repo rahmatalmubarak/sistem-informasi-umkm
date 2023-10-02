@@ -63,7 +63,9 @@ class RoleModel {
 	{
 		$this->db->query('DELETE FROM ' . $this->table . ' WHERE id=:id');
 		$this->db->bind('id',$id);
-		$this->db->execute();
+		try {
+			$this->db->execute();
+		} catch (\Throwable $e) {}
 
 		return $this->db->rowCount();
 	}
@@ -86,5 +88,13 @@ class RoleModel {
 		$this->db->query("SELECT * FROM " . $this->table. ' LIMIT ' . $start . ', 10 ');
 		$this->total_records = count($this->db->resultSet());
 		return $this->db->resultSet();
+	}
+
+
+	public function middleware($role_user, $role_diizinkan)
+	{
+		if ($role_user != $role_diizinkan) {
+			header('location: ' . base_url . '/home');
+		}
 	}
 }

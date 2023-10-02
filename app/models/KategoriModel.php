@@ -63,7 +63,9 @@ class KategoriModel {
 	{
 		$this->db->query('DELETE FROM ' . $this->table . ' WHERE id=:id');
 		$this->db->bind('id',$id);
-		$this->db->execute();
+		try {
+			$this->db->execute();
+		} catch (\Throwable $e) {}
 
 		return $this->db->rowCount();
 	}
