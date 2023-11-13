@@ -22,7 +22,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="footer_nav_container">
-                    <div class="cr">©2018 All Rights Reserverd. Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="#">Colorlib</a> &amp; distributed by <a href="https://themewagon.com">ThemeWagon</a></div>
+                    <div class="cr">©2023 All Rights Reserverd. Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="#">yuka19</a> &amp; distributed by <a href="https://themewagon.com">yuka19</a></div>
                 </div>
             </div>
         </div>

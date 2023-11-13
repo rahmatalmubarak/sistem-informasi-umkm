@@ -78,9 +78,8 @@ class RoleModel {
 		return $this->db->resultSet();
 	}
 
-	public function pagination()
+	public function pagination($page)
 	{
-		$page = explode('/', $_GET['url'])[2];
 		$start = 0;
 		if ($page > 1) {
 			$start = ($page * 10) - 10;

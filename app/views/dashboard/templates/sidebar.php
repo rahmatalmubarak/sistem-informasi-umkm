@@ -1,8 +1,9 @@
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <aside class="main-sidebar sidebar-light-yellow elevation-4">
     <!-- Brand Logo -->
     <a href="<?= base_url . '/landingpage' ?>" class="brand-link" style="text-align: center;">
-      <span class="brand-text font-weight-light">Sistem Informasi UMKM</span>
+      <img style="height: 60px;"  src="<?= base_url; ?>/assets/img/logo.png" alt="">
+      <span class="brand-text font-weight-bold text-md">Sistem Informasi UMKM</span>
     </a>
     <!-- Sidebar -->
     <div class="sidebar">
@@ -51,15 +52,15 @@
             </li>
           <?php endif; ?>
           <?php if ($_SESSION['role'] != 'Pelanggan') : ?>
-          <li class="nav-item">
-            <a href="<?= base_url; ?>/kategori" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Kategori
-              </p>
-            </a>
-          </li>
-          <?php endif;?>
+            <li class="nav-item">
+              <a href="<?= base_url; ?>/kategori" class="nav-link">
+                <i class="nav-icon fas fa-th"></i>
+                <p>
+                  Kategori
+                </p>
+              </a>
+            </li>
+          <?php endif; ?>
           <?php if ($_SESSION['role'] != 'Admin') : ?>
             <li class="nav-item">
               <a href="<?= base_url; ?>/transaksi" class="nav-link">

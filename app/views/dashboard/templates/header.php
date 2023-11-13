@@ -18,6 +18,26 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 
+<style>
+  .card-header {
+    background-color: #FCBF49 !important;
+    color: #232324 !important;
+  }
+
+  .sidebar-light-yellow {
+    background-color: #FCBF49;
+  }
+
+  .user-panel {
+    border-bottom: 1px solid #232324 !important;
+  }
+
+  .brand-link {
+    border-bottom: 1px solid #232324 !important;
+    color: rgba(0, 0, 0, .8);
+  }
+</style>
+
 <body class="hold-transition sidebar-mini">
   <!-- Site wrapper -->
   <div class="wrapper">
@@ -42,11 +62,11 @@
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
               <span class="dropdown-item dropdown-header"><?= count($notif); ?> Notifications</span>
               <div class="dropdown-divider"></div>
-              <?php foreach ($notif as $key => $pesan) :?>
-              <a href="<?= base_url . '/transaksi/read_notif/'. $pesan['id_transaksi']?>" class="dropdown-item">
-                <i class="fas fa-envelope mr-2"></i> <?= substr($pesan['nama_produk'], 20) . '...';?>
-              </a>
-              <?php endforeach;?>
+              <?php foreach ($notif as $key => $pesan) : ?>
+                <a href="<?= base_url . '/transaksi/read_notif/' . $pesan['id_transaksi'] ?>" class="dropdown-item">
+                  <i class="fas fa-envelope mr-2"></i> <?= substr($pesan['nama_produk'], 20) . '...'; ?>
+                </a>
+              <?php endforeach; ?>
             </div>
           </li>
         <?php endif; ?>

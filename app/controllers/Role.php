@@ -31,10 +31,11 @@ class Role extends Controller {
 		$this->view('dashboard/templates/footer');
 	}
 
-	public function page()
+	public function pages()
 	{
+		$page=$_GET['page'];
 		$data['title'] = 'Data Role';
-		$data['role'] = $this->model('RoleModel')->pagination();
+		$data['role'] = $this->model('RoleModel')->pagination($page);
 		$data['paginate'] = $this->model('RoleModel')->get_pagination_number();
 		$this->view('dashboard/templates/header', $data);
 		$this->view('dashboard/templates/sidebar', $data);

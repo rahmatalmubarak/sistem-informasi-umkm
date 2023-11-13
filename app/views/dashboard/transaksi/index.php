@@ -22,7 +22,7 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title"><?= $data['title'] ?></h3>
+                <h3 class="card-title font-weight-bold"><?= $data['title'] ?></h3>
             </div>
             <div class="card-body">
                 <form action="<?= base_url; ?>/transaksi/cari" method="post">
@@ -58,11 +58,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $no = 1; 
-                            foreach ($data['transaksi'] as $row) :
+                        <?php $no = 1;
+                        foreach ($data['transaksi'] as $row) :
                             $toko = $this->model('TokoModel')->getTokoById($row['toko_id']);
                             $pemilik_toko = $this->model('UserModel')->getPemilikToko($row['toko_id']);
-                            ?>
+                        ?>
                             <tr>
                                 <td><?= $no; ?></td>
                                 <?php if ($_SESSION['role'] != 'Pelanggan') : ?>
@@ -98,13 +98,13 @@
                 <div class="col-sm-12">
                     <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
                         <ul class="pagination">
-                            <li class="paginate_button page-item previous disabled" id="example1_previous"><a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
+                            <li class="paginate_button page-item previous <?= isset($_GET['page']) && $_GET['page'] <= 1 ? 'disabled' : '' ?>" id="example1_previous"><a href="<?= base_url; ?>/transaksi/pages?page=<?= isset($_GET['page']) && $_GET['page'] >= 1 ? $_GET['page'] - 1 : 1 ?>" aria-controls="example1" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
                             <?php for ($i = 0; $i < $data['paginate']; $i++) : ?>
                                 <form action="" method="post">
-                                    <li class="paginate_button page-item"><a href="<?php echo base_url; ?>/transaksi/page/<?php echo $i + 1 ?>" aria-controls="example1" data-dt-idx="1" tabindex="0" class="page-link"><?php echo $i + 1 ?></a></li>
+                                    <li class="paginate_button page-item"><a href="<?= base_url; ?>/transaksi/pages?page=<?= $i + 1 ?>" aria-controls="example1" data-dt-idx="1" tabindex="0" class="page-link"><?= $i + 1 ?></a></li>
                                 </form>
                             <?php endfor; ?>
-                            <li class="paginate_button page-item next" id="example1_next"><a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
+                            <li class="paginate_button page-item next <?= isset($_GET['page']) && $_GET['page'] >= $data['paginate'] ? 'disabled' : '' ?>" id="example1_next"><a href="<?= base_url; ?>/transaksi/pages?page=<?= isset($_GET['page']) && $_GET['page'] < $data['paginate'] ? $_GET['page'] + 1 : 1 ?>" aria-controls="example1" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
                         </ul>
                     </div>
                 </div>

@@ -1,5 +1,5 @@
 <!-- Home -->
-<div class="main_slider" style="background-image:url(<?= base_url; ?>/dist/img/slider_1.jpg)" id="home">
+<div class="main_slider" style="background-image:url(<?= base_url; ?>/dist/img/slider_1.png)" id="home">
 	<div class="container fill_height">
 		<div class="row align-items-center fill_height">
 			<div class="col">
@@ -65,53 +65,6 @@
 	</div>
 </div>
 
-
-<!-- Costumer service -->
-
-<div class="blogs" id="cs">
-	<div class="container">
-		<div class="row">
-			<div class="col text-center">
-				<div class="section_title">
-					<h2>Costumer Services</h2>
-				</div>
-			</div>
-		</div>
-		<div class="row blogs_container">
-			<div class="col-lg-4 blog_item_col">
-				<div class="blog_item">
-					<div class="blog_background" style="background-image:url(<?= base_url; ?>/dist/img/blog_1.jpg)"></div>
-					<div class="blog_content d-flex flex-column align-items-center justify-content-center text-center">
-						<h4 class="blog_title">Nama Lengkap</h4>
-						<span class="blog_meta">Falkultas dan jurusan</span>
-						<span>NIM</span>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-4 blog_item_col">
-				<div class="blog_item">
-					<div class="blog_background" style="background-image:url(<?= base_url; ?>/dist/img/blog_2.jpg)"></div>
-					<div class="blog_content d-flex flex-column align-items-center justify-content-center text-center">
-						<h4 class="blog_title">Nama Lengkap</h4>
-						<span class="blog_meta">Falkultas dan jurusan</span>
-						<span>NIM</span>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-4 blog_item_col">
-				<div class="blog_item">
-					<div class="blog_background" style="background-image:url(<?= base_url; ?>/dist/img/blog_3.jpg)"></div>
-					<div class="blog_content d-flex flex-column align-items-center justify-content-center text-center">
-						<h4 class="blog_title">Nama Lengkap</h4>
-						<span class="blog_meta">Falkultas dan jurusan</span>
-						<span>NIM</span>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
 <!-- Kontak -->
 <div class="container contact_container" id="tentang">
 	<div class="container">
@@ -121,15 +74,8 @@
 					<h1>Kontak</h1>
 					<p>There are many ways to contact us. You may drop us a line, give us a call or send an email, choose what suits you the most.</p>
 					<div>
-						<p>(800) 686-6688</p>
-						<p>info.deercreative@gmail.com</p>
-					</div>
-					<div>
-						<p>mm</p>
-					</div>
-					<div>
-						<p>Open hours: 8.00-18.00 Mon-Fri</p>
-						<p>Sunday: Closed</p>
+						<p>Yuka Fimazid</p>
+						<p>082287246704</p>
 					</div>
 				</div>
 

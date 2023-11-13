@@ -18,7 +18,7 @@
           <div class="col-md-8">
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Produk</h3>
+                <h3 class="card-title font-weight-bold">Produk</h3>
               </div>
               <div class="card-body">
                 <input type="hidden" value="<?= $data['produk']['id'] ?>" name="id">

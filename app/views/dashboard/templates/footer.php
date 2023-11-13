@@ -1,11 +1,10 @@
-
-  <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>Version</b> 1.0.0
-    </div>
-    <strong>Copyright &copy;2019 Bukita All rights
+<footer class="main-footer">
+  <div class="float-right d-none d-sm-block">
+    <b>Version</b> 1.0.0
+  </div>
+  <strong>Copyright &copy;2023 yuka19 All rights
     reserved.
-  </footer>
+</footer>
 
 </div>
 <!-- ./wrapper -->
@@ -19,4 +18,5 @@
 <!-- AdminLTE for demo purposes -->
 <script src="<?= base_url; ?>/dist/js/demo.js"></script>
 </body>
+
 </html>

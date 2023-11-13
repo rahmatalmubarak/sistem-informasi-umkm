@@ -31,8 +31,9 @@ class Transaksi extends Controller {
 		$this->view('dashboard/templates/footer');
 	}
 
-	public function page($page)
+	public function pages()
 	{
+		$page = $_GET['page'];
 		$data['title'] = 'Data Transaksi';
 		$data['transaksi'] = $this->model('TransaksiModel')->pagination($page);
 		$data['paginate'] = $this->model('TransaksiModel')->get_pagination_number();

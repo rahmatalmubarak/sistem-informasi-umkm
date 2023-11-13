@@ -3,9 +3,12 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6">
+      <div class="d-flex row mb-2">
+        <div class="col-sm-10">
           <h1>Halaman Produk</h1>
+        </div>
+        <div class="col-sm-2">
+          <a href="<?= base_url; ?>/produk/tambah" class="btn float-right btn-primary">Tambah Produk</a>
         </div>
       </div>
     </div><!-- /.container-fluid -->
@@ -23,7 +26,7 @@
     <!-- Default box -->
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title"><?= $data['title'] ?></h3> <a href="<?= base_url; ?>/produk/tambah" class="btn float-right btn-primary">Tambah Produk</a>
+        <h3 class="card-title font-weight-bold"><?= $data['title'] ?></h3>
       </div>
       <div class="card-body">
         <form action="<?= base_url; ?>/produk/cari" method="post">
@@ -76,13 +79,13 @@
         <div class="col-sm-12">
           <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
             <ul class="pagination">
-              <li class="paginate_button page-item previous disabled" id="example1_previous"><a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
+              <li class="paginate_button page-item previous <?= isset($_GET['page']) && $_GET['page'] <= 1 ? 'disabled' : '' ?>" id="example1_previous"><a href="<?= base_url; ?>/produk/pages?page=<?= isset($_GET['page']) && $_GET['page'] >= 1 ? $_GET['page'] - 1 : 1 ?>" aria-controls="example1" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
               <?php for ($i = 0; $i < $data['paginate']; $i++) : ?>
                 <form action="" method="post">
-                  <li class="paginate_button page-item"><a href="<?= base_url; ?>/produk/page/<?= $i + 1 ?>" aria-controls="example1" data-dt-idx="1" tabindex="0" class="page-link"><?= $i + 1 ?></a></li>
+                  <li class="paginate_button page-item"><a href="<?= base_url; ?>/produk/pages?page=<?= $i + 1 ?>" aria-controls="example1" data-dt-idx="1" tabindex="0" class="page-link"><?= $i + 1 ?></a></li>
                 </form>
               <?php endfor; ?>
-              <li class="paginate_button page-item next" id="example1_next"><a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
+              <li class="paginate_button page-item next <?= isset($_GET['page']) && $_GET['page'] >= $data['paginate'] ? 'disabled' : '' ?>" id="example1_next"><a href="<?= base_url; ?>/produk/pages?page=<?= isset($_GET['page']) && $_GET['page'] < $data['paginate'] ? $_GET['page'] + 1 : 1 ?>" aria-controls="example1" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
             </ul>
           </div>
         </div>

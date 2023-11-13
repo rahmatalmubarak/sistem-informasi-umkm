@@ -17,7 +17,7 @@
           <div class="col-md-8">
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Produk</h3>
+                <h3 class="card-title font-weight-bold">Produk</h3>
               </div>
               <div class="card-body">
                 <div class="form-group">
@@ -49,7 +49,7 @@
           <div class="col-md-4">
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Detail Produk</h3>
+                <h3 class="card-title font-weight-bold">Detail Produk</h3>
               </div>
               <div class="card-body">
                 <div class="form-group">

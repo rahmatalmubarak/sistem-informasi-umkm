@@ -43,10 +43,11 @@ class Produk extends Controller {
 		$this->view('dashboard/templates/footer');
 	}
 
-	public function page()
+	public function pages()
 	{
+		$page = $_GET['page'];
 		$data['title'] = 'Data Produk';
-		$data['produk'] = $this->model('ProdukModel')->pagination();
+		$data['produk'] = $this->model('ProdukModel')->pagination($page);
 		$data['paginate'] = $this->model('ProdukModel')->get_pagination_number();
 		$this->view('dashboard/templates/header', $data);
 		$this->view('dashboard/templates/sidebar', $data);

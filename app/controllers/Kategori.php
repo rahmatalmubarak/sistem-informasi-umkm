@@ -34,8 +34,9 @@ class Kategori extends Controller {
 		$this->view('dashboard/templates/footer');
 	}
 
-	public function page($page)
+	public function pages()
 	{
+		$page = $_GET['page'];
 		$data['title'] = 'Data Kategori';
 		$data['kategori'] = $this->model('KategoriModel')->pagination($page);
 		$data['paginate'] = $this->model('KategoriModel')->get_pagination_number();

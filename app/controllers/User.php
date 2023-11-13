@@ -29,8 +29,9 @@ class User extends Controller {
 		$this->view('dashboard/user/detail', $data);
 		$this->view('dashboard/templates/footer');
 	}
-	public function page($page)
+	public function pages()
 	{
+		$page = $_GET['page'];
 		$data['title'] = 'Data User';
 		$data['user'] = $this->model('UserModel')->pagination($page);
 		$data['paginate'] = $this->model('UserModel')->get_pagination_number();

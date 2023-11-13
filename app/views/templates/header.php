@@ -32,6 +32,10 @@
             padding-right: 8px;
         }
 
+        .bg-yellow {
+            color: #FCBF49;
+        }
+
         .add_to_cart_button {
             width: 100%;
             margin-left: 0px;
