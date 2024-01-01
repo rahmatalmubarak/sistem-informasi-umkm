@@ -34,11 +34,24 @@
 <script>
     $(document).ready(function() {
         $('#pesan_produk').click(function() {
-            var jumlah = $('#quantity_value').text();
-            var jumlah_di_modal = $('#jumlah_di_modal').text(jumlah);
-            var harga = $('#harga').text()
-            var total = parseInt(jumlah) * parseInt(harga);
-            $('#total').text(total)
+            let origin = '<?= $data['pelaku_UMKM']['alamat']['kabupaten_kota'] ?>';
+            let destination = '<?= $data['pelanggan']['alamat']['kabupaten_kota'] ?>';
+            $.ajax({
+                method: 'GET',
+                url: '<?= base_url; ?>' + `/alamat/totalOngkir?origin=${origin}&destination=${destination}&weight=1700&courier=jne`,
+                dataType: 'json',
+                success: function(result) {
+                    let ongkir = result.rajaongkir.results[0].costs[0].cost[0].value;
+                    let record_table = "<tr><td>2</td><td>Ongkir</td><td>-</td><td>Rp. "+ongkir+"</td></tr>";
+                    $('#table_invoice tr:last').after(record_table);
+                    var jumlah = $('#quantity_value').text();
+                    var jumlah_di_modal = $('#jumlah_di_modal').text(jumlah);
+                    var harga = $('#harga').text()
+                    var total = (parseInt(jumlah) * parseInt(harga)) + parseInt(ongkir);
+                    $('#total').text(total)
+                }
+            });
+
         })
     });
 
@@ -52,7 +65,6 @@
                 'pelaku_umkm_id': $('#pelaku_UMKM').text(),
                 'total': $('#total').text()
             }
-            console.log(data);
             $.ajax({
                 type: "POST",
                 url: base_url + '/landingpage/tambah_keranjang/tambahKeranjang',

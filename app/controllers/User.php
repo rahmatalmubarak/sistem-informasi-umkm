@@ -188,4 +188,40 @@ class User extends Controller {
 		$this->view('dashboard/user/pelaku_umkm', $data);
 		$this->view('dashboard/templates/footer');
 	}
+
+	public function alamatLengkap($id)
+	{
+		$data['title'] = 'Alamat Lengkap User';
+		$data['user'] = $this->model('UserModel')->getUserById($id);
+		$data['paginate'] = $this->model('UserModel')->get_pagination_number();
+		$this->view('dashboard/templates/header', $data);
+		$this->view('dashboard/templates/sidebar', $data);
+		$this->view('dashboard/user/alamat_lengkap', $data);
+		$this->view('dashboard/templates/footer');
+	}
+
+	public function updateAlamat()
+	{
+		$data['alamat_lengkap'] = $this->model('UserModel')->detailAlamat($_POST['user_id']);
+		$isSuccess = 0;
+		if($data['alamat_lengkap']){
+			$isSuccess = $this->model('UserModel')->updateAlamat($_POST);
+		}else{
+			$isSuccess = $this->model('UserModel')->tambahAlamat($_POST);
+		}
+		if($isSuccess > 0){
+			Flasher::setMessage('Berhasil', 'diubah', 'success');
+		}else{
+			Flasher::setMessage('Gagal', 'diubah', 'danger');
+		}
+
+		header('location: ' . base_url . '/user/alamatLengkap/' . $_POST['user_id']);
+		exit();
+	}
+
+	public function alamatUser()
+	{
+		$data['alamat_lengkap'] = $this->model('UserModel')->detailAlamat($_GET['user_id']);	
+		echo json_encode($data);
+	}
 }

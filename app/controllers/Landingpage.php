@@ -12,7 +12,9 @@ class Landingpage extends Controller {
         $data['kategori'] = $this->model('KategoriModel')->getAllKategori();
         $data['produk'] = $this->model('ProdukModel')->getProdukById($id);
         $data['pelaku_UMKM'] = $this->model('UserModel')->getPemilikToko($data['produk']['id_toko']);
+        $data['pelaku_UMKM']['alamat'] = $this->model('UserModel')->detailAlamat($data['pelaku_UMKM']['id']);
         $data['pelanggan'] = $this->model('UserModel')->getUserById($_SESSION['id']);
+        $data['pelanggan']['alamat'] = $this->model('UserModel')->detailAlamat($_SESSION['id']);
         $data['title'] = 'Detail Produk - ' . $data['produk']['nama_produk'];
         $this->view('templates/header',$data);
         $this->view('detail/detail_product',$data);

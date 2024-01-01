@@ -47,7 +47,6 @@
               <label>Nama Toko (Khusus untuk Pelaku UMKM)</label>
               <input type="text" class="form-control" placeholder="masukkan nama toko..." name="nama_toko">
             </div>
-
             <div class="form-group">
               <label>Alamat Toko (Khusus untuk Pelaku UMKM)</label>
               <input type="text" class="form-control" placeholder="masukkan alamat..." name="alamat_toko">
@@ -66,10 +65,6 @@
             <div class="form-group">
               <label>Kontak</label>
               <input type="text" class="form-control" placeholder="masukkan kontak..." name="kontak">
-            </div>
-            <div class="form-group">
-              <label>Alamat</label>
-              <input type="text" class="form-control" placeholder="masukkan alamat..." name="alamat">
             </div>
             <div class="form-group">
               <label>Nomor Rekening (Khusus untuk Pelaku UMKM)</label>

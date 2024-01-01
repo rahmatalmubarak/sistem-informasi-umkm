@@ -97,6 +97,16 @@
               </p>
             </a>
           </li>
+          <?php if ($_SESSION['role'] != 'Admin') : ?>
+          <li class="nav-item">
+            <a href="<?= base_url . '/user/alamatLengkap/' . $_SESSION['id']; ?>" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Alamat lengkap
+              </p>
+            </a>
+          </li>
+          <?php endif;?>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

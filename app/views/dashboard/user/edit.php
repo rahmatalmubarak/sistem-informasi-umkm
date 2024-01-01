@@ -73,10 +73,6 @@
               <label>Kontak</label>
               <input type="text" class="form-control" placeholder="masukkan kontak..." name="kontak" value="<?= $data['user']['kontak'] ?>">
             </div>
-            <div class="form-group">
-              <label>Alamat</label>
-              <input type="text" class="form-control" placeholder="masukkan alamat..." name="alamat" value="<?= $data['user']['alamat'] ?>">
-            </div>
             <?php if ($data['user']['role_id'] == '2') : ?>
               <div class="form-group">
                 <label>Nomor Rekening (Khusus Pelaku UMKM)</label>

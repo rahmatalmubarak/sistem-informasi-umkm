@@ -8,6 +8,7 @@
     <meta name="description" content="Colo Shop Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="<?= base_url; ?>/dist/css/bootstrap4/bootstrap.min.css">
+    <link rel="icon" type="image/x-icon" href="<?= base_url; ?>/assets/img/logo.png">
     <link href="<?= base_url; ?>/dist/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="<?= base_url; ?>/dist/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url; ?>/dist/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">

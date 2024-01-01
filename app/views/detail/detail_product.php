@@ -65,7 +65,7 @@
 					</div>
 				</div>
 				<div class="pesan">
-					<a class="btn btn-order btn-danger" <?= isset($_SESSION['session_login']) && $_SESSION['session_login'] == 'sudah_login' ?  'data-toggle="modal" data-target="#modal-default"' : 'href="' . base_url . '/auth/login"' ?> id="pesan_produk">Pesan Produk</a>
+					<a class="btn btn-order btn-danger" <?= isset($_SESSION['session_login']) && $_SESSION['session_login'] == 'sudah_login' ?  'data-toggle="modal" data-target="#modal-default"' : 'href="' . base_url . '/auth/login"' ?> id="pesan_produk" style="cursor: pointer; color: white;">Pesan Produk</a>
 					<a class="btn btn-order btn-success" href="https://wa.me/+62<?= $data['produk']['kontak']; ?>">Pesan via WA</a>
 					<a class="btn btn-order btn-info" href="#deskripsi">Deskripsi Produk</a>
 				</div>
@@ -119,7 +119,6 @@
 		</div>
 	</div>
 </div>
-
 <div class="modal fade" id="modal-default">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -146,7 +145,7 @@
 						<address>
 							<span id="id_pelanggan" hidden><?= $data['pelanggan']['id'] ?></span>
 							<strong><?= $data['pelanggan']['nama'] ?></strong><br>
-							<?= $data['pelanggan']['alamat'] ?><br>
+							<?= $data['pelanggan']['alamat']['alamat_lengkap'] ?><br>
 							Phone: <?= $data['pelanggan']['kontak'] ?><br>
 							Email: <?= $data['pelanggan']['email'] ?>
 						</address>
@@ -158,7 +157,7 @@
 							<span id="produk_id" hidden><?= $data['produk']['id'] ?></span>
 							<strong><?= $data['produk']['nama_toko'] ?></strong><br>
 							<?= $data['pelaku_UMKM']['nama'] ?><br>
-							<?= $data['pelaku_UMKM']['alamat'] ?><br>
+							<?= $data['pelaku_UMKM']['alamat']['alamat_lengkap'] ?><br>
 							Phone: <?= $data['pelaku_UMKM']['kontak'] ?><br>
 							Email: <?= $data['pelaku_UMKM']['email'] ?><br>
 							No Rekening: <?= $data['pelaku_UMKM']['rekening'] ?>
@@ -169,16 +168,16 @@
 				<!-- /.row -->
 				<div class="row">
 					<div class="col-12 table-responsive">
-						<table class="table table-striped">
+						<table class="table table-striped" id="table_invoice">
 							<thead>
 								<tr>
 									<th>Jumlah</th>
-									<th>Nama Produk</th>
-									<th>Deskripsi</th>
+									<th style="width: 30%;">Nama Produk</th>
+									<th style="width: 30%;">Deskripsi</th>
 									<th>harga</th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody id="list_belanja">
 								<tr>
 									<td id='jumlah_di_modal'></td>
 									<td><?= $data['produk']['nama_produk']; ?></td>

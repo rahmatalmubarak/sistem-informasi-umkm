@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 29, 2023 at 04:48 AM
+-- Generation Time: Jan 01, 2024 at 04:40 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -20,6 +20,30 @@ SET time_zone = "+00:00";
 --
 -- Database: `umkm`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `alamat_user`
+--
+
+CREATE TABLE `alamat_user` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `provinsi` varchar(150) NOT NULL,
+  `kabupaten_kota` varchar(150) NOT NULL,
+  `alamat_lengkap` text NOT NULL,
+  `kode_pos` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `alamat_user`
+--
+
+INSERT INTO `alamat_user` (`id`, `user_id`, `provinsi`, `kabupaten_kota`, `alamat_lengkap`, `kode_pos`) VALUES
+(0, 35, '2', '29', 'Padang', 26192),
+(0, 27, '2', '28', 'Padang', 26192),
+(0, 38, '2', '28', 'Padang', 26192);
 
 -- --------------------------------------------------------
 
@@ -41,8 +65,36 @@ CREATE TABLE `kategori` (
 INSERT INTO `kategori` (`id`, `nama_kategori`, `warna`, `icon`) VALUES
 (60, 'Fashion', 'bg-info', ''),
 (61, 'Barang', 'bg-success', ''),
-(62, 'Makanan', 'bg-danger', ''),
-(63, 'Teknologi', 'bg-warning', '');
+(62, 'Makananqwe', 'bg-danger', ''),
+(63, 'Teknologi', 'bg-warning', ''),
+(65, 'Fashion', 'bg-info', ''),
+(66, 'Barang', 'bg-success', ''),
+(67, 'Makanan', 'bg-danger', ''),
+(68, 'Teknologi', 'bg-warning', ''),
+(69, 'Fashion', 'bg-info', ''),
+(70, 'qwe', 'bg-success', ''),
+(71, 'Makanan', 'bg-danger', ''),
+(72, 'Teknologi', 'bg-warning', ''),
+(73, 'Fashion', 'bg-info', ''),
+(74, 'Barang', 'bg-success', ''),
+(75, 'Makanan', 'bg-danger', ''),
+(76, 'Teknologi', 'bg-warning', ''),
+(77, 'Fashion', 'bg-info', ''),
+(78, 'Barang', 'bg-success', ''),
+(79, 'Makanan', 'bg-danger', ''),
+(80, 'Teknologiqweqwe', 'bg-warning', ''),
+(81, 'Fashion', 'bg-info', ''),
+(82, 'Barang', 'bg-success', ''),
+(83, 'Makanan', 'bg-danger', ''),
+(84, 'Teknologi', 'bg-warning', ''),
+(85, 'Fashion', 'bg-info', ''),
+(86, 'Barang', 'bg-success', ''),
+(87, 'Makanan', 'bg-danger', ''),
+(88, 'Teknologi', 'bg-warning', ''),
+(89, 'Fashion', 'bg-info', ''),
+(90, 'Barang', 'bg-success', ''),
+(91, 'Makanan', 'bg-danger', ''),
+(92, 'asd', 'bg-warning', '');
 
 -- --------------------------------------------------------
 
@@ -144,15 +196,13 @@ CREATE TABLE `transaksi` (
 
 INSERT INTO `transaksi` (`id`, `produk_id`, `pelanggan_id`, `pelaku_umkm_id`, `jumlah`, `total`, `status`, `notif`, `tanggal_transaksi`) VALUES
 (18, 2, 35, 1, 1, 0, 'sudah bayar', NULL, '2023-09-29 08:12:31'),
-(26, 4, 35, 27, 1, 200000, 'sudah bayar', NULL, '2023-09-29 08:12:31'),
 (29, 2, 35, 25, 1, 200000, 'belum bayar', NULL, '2023-09-29 08:01:42'),
 (30, 5, 38, 32, 1, 200000, 'belum bayar', NULL, '2023-09-29 08:12:31'),
-(31, 7, 38, 27, 1, 200000, 'belum bayar', NULL, '2023-09-29 08:12:31'),
 (32, 9, 38, 27, 1, 250000, 'belum bayar', NULL, '2023-09-29 08:12:31'),
 (33, 2, 35, 27, 1, 200000, 'belum bayar', NULL, '2023-09-29 08:12:31'),
 (34, 12, 35, 27, 1, 270000, 'belum bayar', NULL, '2023-09-29 08:12:31'),
 (35, 13, 35, 27, 1, 220000, 'belum bayar', 0, '2023-09-29 09:20:00'),
-(36, 8, 35, 27, 1, 350000, 'belum bayar', 1, '2023-09-29 09:47:22');
+(37, 15, 35, 27, 1, 232000, 'belum bayar', 1, '2024-01-01 21:24:40');
 
 -- --------------------------------------------------------
 
@@ -167,7 +217,6 @@ CREATE TABLE `user` (
   `email` varchar(100) NOT NULL,
   `jenis_kelamin` varchar(15) NOT NULL,
   `kontak` varchar(15) DEFAULT NULL,
-  `alamat` varchar(200) NOT NULL,
   `toko_id` int(11) DEFAULT NULL,
   `rekening` varchar(25) DEFAULT NULL,
   `password` varchar(255) NOT NULL,
@@ -178,19 +227,24 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `photo`, `nama`, `email`, `jenis_kelamin`, `kontak`, `alamat`, `toko_id`, `rekening`, `password`, `role_id`) VALUES
-(1, 'banner_1.jpg', 'Herzi', 'admin@gmail.com', 'laki-laki', '0989089', 'Telkom University Facts ; 979. Lecturer ; 34052. Student ; 65355. Alumni ; 50. Campus Acres.', NULL, '0120123123', 'e00cf25ad42683b3df678c61f42c6bda', 1),
-(25, 'avatar5.png', 'Fulan', 'qwe@asd.comas', 'laki-laki', '081512312123', 'Padang', 1, '012987773112', 'f5bb0c8de146c67b44babbf4e6584cc0', 2),
-(27, 'avatar2.png', 'Rahmat', 'rahmat@gmail.com', 'laki-laki', '0989089', 'Padang', 11, '012987123112', 'e00cf25ad42683b3df678c61f42c6bda', 2),
-(32, 'avatar2.png', 'Rahmat al mubarak', 'rahmatalmuabarak35@gmail.com', 'laki-laki', '0989089', 'Padang', 10, '0120123123', '202cb962ac59075b964b07152d234b70', 1),
-(35, 'avatar2.png', 'Deni Wahyuni', 'deni@gmail.com', 'perempuan', '081977717633', 'Padang', NULL, NULL, '202cb962ac59075b964b07152d234b70', 3),
-(36, 'avatar.png', 'Yanto', 'yanto@gmail.com', 'laki-laki', '081977717632', 'Padang', 12, '151223812', '202cb962ac59075b964b07152d234b70', 2),
-(37, 'avatar3.png', 'Mickel', 'mickel@gmail.com', 'laki-laki', '081977717634', 'Padang', 13, '115212318', '202cb962ac59075b964b07152d234b70', 2),
-(38, 'deal_ofthe_week.png', 'Asep', 'asep@gmail.com', 'laki-laki', '123123123', 'padang', NULL, NULL, '202cb962ac59075b964b07152d234b70', 3);
+INSERT INTO `user` (`id`, `photo`, `nama`, `email`, `jenis_kelamin`, `kontak`, `toko_id`, `rekening`, `password`, `role_id`) VALUES
+(1, 'banner_1.jpg', 'Herzi', 'admin@gmail.com', 'laki-laki', '0989089', NULL, '0120123123', 'e00cf25ad42683b3df678c61f42c6bda', 1),
+(25, 'avatar5.png', 'Fulans', 'qwe@asd.comas', 'laki-laki', '081512312123', 1, '012987773112', 'f5bb0c8de146c67b44babbf4e6584cc0', 2),
+(27, 'avatar2.png', 'Rahmat', 'rahmat@gmail.com', 'laki-laki', '0989089', 11, '012987123112', 'e00cf25ad42683b3df678c61f42c6bda', 2),
+(32, 'avatar2.png', 'Rahmat al mubarak', 'rahmatalmuabarak35@gmail.com', 'laki-laki', '0989089', 10, '0120123123', '202cb962ac59075b964b07152d234b70', 1),
+(35, 'avatar2.png', 'Deni Wahyuni', 'deni@gmail.com', 'perempuan', '081977717633', NULL, NULL, '202cb962ac59075b964b07152d234b70', 3),
+(37, 'avatar3.png', 'Mickel', 'mickel@gmail.com', 'laki-laki', '081977717634', 13, '115212318', '202cb962ac59075b964b07152d234b70', 2),
+(38, 'deal_ofthe_week.png', 'Aseps', 'asep@gmail.com', 'laki-laki', '123123123', NULL, NULL, '202cb962ac59075b964b07152d234b70', 3);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `alamat_user`
+--
+ALTER TABLE `alamat_user`
+  ADD KEY `alamat_user_ibfk_1` (`user_id`);
 
 --
 -- Indexes for table `kategori`
@@ -232,8 +286,8 @@ ALTER TABLE `transaksi`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `role_id` (`role_id`),
-  ADD KEY `toko_id` (`toko_id`);
+  ADD KEY `user_ibfk_1` (`role_id`),
+  ADD KEY `user_ibfk_2` (`toko_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -243,7 +297,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- AUTO_INCREMENT for table `produk`
@@ -267,7 +321,7 @@ ALTER TABLE `toko`
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -278,6 +332,12 @@ ALTER TABLE `user`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `alamat_user`
+--
+ALTER TABLE `alamat_user`
+  ADD CONSTRAINT `alamat_user_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `produk`
@@ -298,8 +358,8 @@ ALTER TABLE `transaksi`
 -- Constraints for table `user`
 --
 ALTER TABLE `user`
-  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`),
-  ADD CONSTRAINT `user_ibfk_2` FOREIGN KEY (`toko_id`) REFERENCES `toko` (`id`);
+  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `user_ibfk_2` FOREIGN KEY (`toko_id`) REFERENCES `toko` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
