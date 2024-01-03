@@ -17,7 +17,7 @@ class Alamat extends Controller
         CURLOPT_CUSTOMREQUEST => 'GET',
         CURLOPT_POSTFIELDS => array(),
         CURLOPT_HTTPHEADER => array(
-            'key: abf4037692f23dd3342adcb718ff7fc2'
+            'key: 2839774580262fafd074f453bb91e4d4'
         ),
         ));
 
@@ -41,7 +41,7 @@ class Alamat extends Controller
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         CURLOPT_CUSTOMREQUEST => "GET",
         CURLOPT_HTTPHEADER => array(
-                "key: abf4037692f23dd3342adcb718ff7fc2"
+                "key: 2839774580262fafd074f453bb91e4d4"
         ),
         ));
 
@@ -74,7 +74,7 @@ class Alamat extends Controller
         CURLOPT_POSTFIELDS => 'origin=' . $origin . '&destination=' . $destination . '&weight=1700&courier=jne',
         CURLOPT_HTTPHEADER => array(
             "content-type: application/x-www-form-urlencoded",
-            "key: abf4037692f23dd3342adcb718ff7fc2"
+            "key: 2839774580262fafd074f453bb91e4d4"
         ),
         ));
 
