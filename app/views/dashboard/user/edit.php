@@ -7,6 +7,11 @@
           <div class="col-sm-6">
             <h1>Halaman User</h1>
           </div>
+          <div class="col-sm-6">
+            <a class="btn btn-primary float-right" style="height: ;" href="<?= base_url . '/user/alamatLengkap/' . $data['user']['id']; ?>" class="nav-link">
+              Ubah Alamat lengkap
+            </a>
+          </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -81,7 +86,7 @@
             <?php endif; ?>
             <div class="form-group">
               <?php if ($_SESSION['role'] == 'Admin') : ?>
-              <label for="" class="form-label">Role</label>
+                <label for="" class="form-label">Role</label>
                 <select class="form-control" name="role_id" id="role_id">
                   <option selected>Pilih</option>
                   <?php foreach ($data['role'] as $key => $role) : ?>
@@ -92,23 +97,23 @@
                 </select>
               <?php else : ?>
                 <input type="text" value="<?= $data['user']['role_id']; ?>" name="role_id" id="role_id" hidden>
-                <?php endif; ?>
-              </div>
+              <?php endif; ?>
+            </div>
             <blockquote class=" quote-warning">Abaikan jika tidak ingin mengganti password.</blockquote>
-                <div class="form-group">
-                  <label>Password</label>
-                  <input type="password" class="form-control" placeholder="masukkan password..." name="password">
-                </div>
-                <div class="form-group">
-                  <label>Ulangi Password</label>
-                  <input type="password" class="form-control" name="ulangi_password">
-                </div>
+            <div class="form-group">
+              <label>Password</label>
+              <input type="password" class="form-control" placeholder="masukkan password..." name="password">
             </div>
-            <!-- /.card-body -->
+            <div class="form-group">
+              <label>Ulangi Password</label>
+              <input type="password" class="form-control" name="ulangi_password">
+            </div>
+          </div>
+          <!-- /.card-body -->
 
-            <div class="card-footer">
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
+          <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
         </form>
       </div>
     </section>

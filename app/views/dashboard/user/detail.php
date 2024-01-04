@@ -25,7 +25,8 @@
                   <p class="text-muted text-sm"><b>Level : </b> <?= $data['user']['nama_role']; ?> </p>
                   <ul class="ml-4 mb-3  fa-ul text-muted">
                     <li class="small mb-2"><span class="fa-li"><i class="fas fa-lg fa-venus-mars"></i></span><?= $data['user']['jenis_kelamin']; ?></li>
-                    <li class="small mb-2"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span><?= $data['user']['alamat']; ?></li>
+                    <!-- <?php var_dump($data['user']); ?> -->
+                    <li class="small mb-2"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span><?= $data['user']['alamat'] ? $data['user']['alamat']['alamat_lengkap'] : '-'; ?></li>
                     <li class="small mb-2"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span><?= $data['user']['kontak']; ?></li>
                     <?php if(isset($data['user']['rekening'])) :?>
                     <li class="small mb-2"><span class="fa-li"><i class="fas fa-lg fa-credit-card"></i></span><?= $data['user']['rekening']; ?></li>

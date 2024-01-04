@@ -23,6 +23,7 @@ class User extends Controller {
 	{
 		$data['title'] = 'Data User';
 		$data['user'] = $this->model('UserModel')->getUserById($id);
+		$data['user']['alamat'] = $this->model('UserModel')->detailAlamat($id);
 		$data['paginate'] = $this->model('UserModel')->get_pagination_number();
 		$this->view('dashboard/templates/header', $data);
 		$this->view('dashboard/templates/sidebar', $data);
