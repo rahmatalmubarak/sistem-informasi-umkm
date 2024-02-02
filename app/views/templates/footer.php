@@ -42,8 +42,11 @@
                 dataType: 'json',
                 success: function(result) {
                     let ongkir = result.rajaongkir.results[0].costs[0].cost[0].value;
-                    let record_table = "<tr><td>2</td><td>Ongkir</td><td>-</td><td>Rp. " + ongkir + "</td></tr>";
-                    $('#table_invoice tr:last').after(record_table);
+                    let rangka = "<td>2</td><td>Ongkir</td><td>-</td><td>Rp. " + ongkir + "</td>";
+                    let record_table = `<tr>${rangka}</tr>`;
+                    if ($('#table_invoice tr:last')[0]['innerHTML'] != rangka){
+                        $('#table_invoice tr:last').after(record_table);
+                    }
                     var jumlah = $('#quantity_value').text();
                     var jumlah_di_modal = $('#jumlah_di_modal').text(jumlah);
                     var harga = $('#harga').text()
