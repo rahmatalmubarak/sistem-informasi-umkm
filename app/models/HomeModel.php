@@ -2,6 +2,7 @@
 
 class HomeModel {
 	private $db;
+	private $total_records;
 
 	public function __construct()
 	{
@@ -27,5 +28,23 @@ class HomeModel {
 		}
 		
 		return $data;
+	}
+
+	public function pagination($page)
+	{
+		$start = 0;
+		if ($page > 1) {
+			$start = ($page * 10) - 10;
+		}
+		$id = $_SESSION['id'];
+		$bln = isset($_GET['bln'])? $_GET['bln'] : 0;
+		$thn = isset($_GET['thn'])? $_GET['thn'] : 0;
+		$this->db->query("SELECT * FROM  transaksi  
+						WHERE pelaku_umkm_id=$id AND status = 'sudah bayar' 
+						AND if($bln > 0,MONTH(tanggal_transaksi) = $bln,MONTH(tanggal_transaksi)) 
+						AND if($thn > 0,YEAR(tanggal_transaksi) = $thn,YEAR(tanggal_transaksi)) 
+						LIMIT $start, 10 ");
+		$this->total_records = count($this->db->resultSet());
+		return $this->db->resultSet();
 	}
 }

@@ -5,7 +5,6 @@
   <strong>Copyright &copy;2023 yuka19 All rights
     reserved.
 </footer>
-
 </div>
 <!-- ./wrapper -->
 
@@ -103,6 +102,46 @@
         $('#kode_pos').val(alamat.kode_pos);
       }
     });
+  });
+
+  var ctx = document.getElementById("myChart");
+  var labels = '<?php
+                $labels = '';
+                foreach ($data['graf'] as $transaksi) {
+                  $labels .= ','.(int) date_format(date_create($transaksi['tanggal_transaksi']), "j") ;
+                }
+                echo $labels;
+                ?>';
+  var total = '<?php
+                $total = '';
+                foreach ($data['graf'] as $transaksi) {
+                  $total .=  ','.$transaksi['total_transaksi'] ;
+                }
+                echo $total;
+                ?>';
+  console.log(labels);
+  var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: labels.split(','),
+      datasets: [{
+        label: 'Pemasukan',
+        data: total.split(','),
+        fill: false,
+        borderColor: 'rgb(75, 192, 192)',
+        tension: 0.1,
+        borderWidth: 2
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
   });
 </script>
 </body>

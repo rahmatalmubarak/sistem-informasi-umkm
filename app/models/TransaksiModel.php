@@ -51,6 +51,34 @@ class TransaksiModel {
 		$this->db->bind('id',$id);
 		return $this->db->single();
 	}
+
+	public function getTransaksiSudahBayarById($id,$bln,$thn)
+	{
+		$this->db->query('SELECT * FROM ' . $this->table . ' WHERE pelaku_umkm_id=:id AND status = "sudah bayar" AND if(:bln > 0,MONTH(tanggal_transaksi) = :bln,MONTH(tanggal_transaksi)) AND if(:thn > 0,YEAR(tanggal_transaksi) = :thn,YEAR(tanggal_transaksi)) ORDER BY tanggal_transaksi ASC');
+		$this->db->bind('id', $id);
+		$this->db->bind('bln', $bln);
+		$this->db->bind('thn', $thn);
+		return $this->db->resultSet();
+	}
+
+	public function getTotalSemuaTransaksiById($id,$bln,$thn)
+	{
+		$this->db->query('SELECT sum(total) as total_semua  FROM ' . $this->table . ' WHERE pelaku_umkm_id=:id AND status = "sudah bayar" AND if(:bln > 0,MONTH(tanggal_transaksi) = :bln,MONTH(tanggal_transaksi)) AND if(:thn > 0,YEAR(tanggal_transaksi) = :thn,YEAR(tanggal_transaksi))');
+		$this->db->bind('id', $id);
+		$this->db->bind('bln', $bln);
+		$this->db->bind('thn', $thn);
+		return $this->db->single();
+	}
+
+	public function getTotalPerDayById($id,$bln,$thn)
+	{
+		$this->db->query('SELECT *, SUM(total) as total_transaksi FROM transaksi WHERE pelaku_umkm_id=:id AND status = "sudah bayar" AND if(:bln > 0,MONTH(tanggal_transaksi) = :bln,MONTH(tanggal_transaksi)) AND if(:thn > 0,YEAR(tanggal_transaksi) = :thn,YEAR(tanggal_transaksi)) GROUP BY DAY(tanggal_transaksi),YEAR(tanggal_transaksi)');
+		$this->db->bind('id', $id);
+		$this->db->bind('bln', $bln);
+		$this->db->bind('thn', $thn);
+		return $this->db->resultSet();
+	}
+
 	public function tambahKeranjang($data)
 	{
 		$query = "INSERT INTO transaksi (produk_id,pelanggan_id,pelaku_umkm_id,jumlah,total,status,notif,tanggal_transaksi) VALUES(:produk_id,:pelanggan_id,:pelaku_umkm_id,:jumlah,:total,'belum bayar',1,NOW())";
